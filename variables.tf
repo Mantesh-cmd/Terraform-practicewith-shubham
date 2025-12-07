@@ -19,6 +19,6 @@ variable "roor_block_device_size" {
 
 variable "env" {
     type = string
-    default = "prod" 
+    default = "dev" 
 }
 
