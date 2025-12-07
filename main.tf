@@ -11,7 +11,7 @@ resource "aws_s3_bucket" "aws-s3-december" {
 }
 
 resource "aws_key_pair" "my_key_pair" {
-  key_name   = "ec2-key-pair"
+  key_name   = "${var.env}-ec2-key-pair"
   public_key = file("id_ed25519.pub")
 }
 
@@ -55,7 +55,7 @@ resource "aws_security_group" "globant_sg" {
 resource "aws_instance" "my_ec2_instance" {
   for_each =  tomap({             # meta argument
     aws_first_instance = "t2.micro",
-    aws_second_instance = "t2.medium"
+    #aws_second_instance = "t2.medium"
   })               
 
   ami                    = var.ec2_instance_ami
